@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="iu">
+	<head>
+		<meta charset="UTF-8">
+		<title>Shy Link is Shy</title>
+		<meta 
+			name="description" 
+			content="Use Javascript mouse events, animation, and functional programming">
+		<meta name="author" content="-kris-">
+		<!--
+			Change log:
+				Created:	12. Oct 2015										- Drapak
+				Modified:	3. April 2017	- moved script to bottom of page	- Drapak
+							12. April 2017	- added long line ruler				- Drapak
+							7. Nov 2018		- reworked more flexible criteria	- Drapak
+							18. Nov 2018	- removed input function required	- Drapak
+							12. Nov 2024    - saved code template 				- Chisholm
+							15. Nov 2024  	- finished, coded rot. 				- Chisholm
+		-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+		</script>
+
+		<style>
+			/* sets the image size and places it in the middle of the screen */
+			#linkImg {
+				width:		80px;
+				top:		50%;
+				left:		50%;
+			}
+
+			.image {
+				width:		80px;
+				position:   absolute;
+			}
+
+			#body {
+				background-color: #F2B6D7;
+			}
+
+			#heading {
+				color:  #BF739D;
+			}
+
+			#specialSecret {
+				position:  absolute;
+				color:			#F2B6D7;
+				background-color: #F2B6D7;
+				border:         2px solid #F3A9DB;				
+			}
+
+
+
+		</style>
+	</head>
+
+	<body id="body">
+		<!--
+			Use function pipelines to create a program that moves animates 
+			something smoothly in response to clicks and the movement of the mouse.
+			
+			Evaluation checklist:
+			
+			___/10 HTML/CSS: Choose ANY FIVE OF
+				[-] link to the jQuery library REQUIRED
+				[-] create an element to move with an id
+				[-] change the position of that element in CSS so it can move
+				[ ] trigger a function using onmouseover
+				[ ] trigger a function using onmouseout
+do this one 	[-] trigger a function using onclick
+				[-] trigger a function using onkeydown
+				
+			___/10 PROCESS: including:
+				[-] create a function that accepts an argument
+				[-] create a function that returns a value
+do maths		[-] generate a random number using Math.random()
+				[-] use if...else if...else
+				[-] create at least one process-only function
+				[-] create at least one output-only function
+				
+			___/10 OUTPUT: including:
+				[-] create a function that will animate something up using jQuery
+				[-] create a function that will animate something down using jQuery
+				[-] create a function that will animate something left using jQuery
+				[-] create a function that will animate something right using jQuery
+				[-] change the src, width, or style of an element
+				
+			___/10 STYLE: including:
+				[-] add your name to the filename
+				[-] write your name as the author
+				[-] update the change log
+				[-] correctly indent everything
+				[-] use lowercase for all your HTML tags
+				[-] use camelCase for all your ids and classes
+				[-] avoid lines greater than 96 characters in length
+				[-] restrict your style code to the head of your HTML file
+						no different style sheet /_\
+consolelog 		[-] space out your mathematical operators
+				[-] use descriptive variable names
+				[-] use a FUNCTIONAL PROGRAMMING STYLE: breaking up functions into separate 
+						ones for MAIN, INPUT, PROCESSING, and OUTPUT
+				[-] use DESCRIPTIVE COMMENTS to describe each function, for example: 
+						//OUTPUT: 	this function accepts a distance and animates 
+						//			the image up that number of pixels
+	
+
+			HINT: Not sure where to start? Read the hints on the assignment web page!
+
+
+onclick, generate random number and do math on it in the console log 
+------------STYLE GUIDE FOR LONG LINES: DO NOT PASS COLUMN 95 -------------------------------|
+ -->
+		<img class="image"
+			id="linkImg"
+			src="http://drapak.ca/cpg/img/link-down.png"/>
+
+		<h1 id="heading">2.14: Hand-in: Shy link is Shy. Run him off the screen, he'll be happier 😔</h1>
+
+		<button id="specialSecret">WOW! You found the special button :D</button>
+
+		<p id="outputParagraph"></p>
+
+
+		<script>
+		
+			//change images based on keypress, make sure it lines up with the pipeline method.
+
+			//for the final outcomee, just make a button that will do something stupid, and 
+				//some maths in the console log. 
+
+			//make my programming direct and functional, pipeline method !!! 
+
+			//INIT - generates random number
+			const randomNum = Math.ceil( Math.random() * 20 );
+				console.log(randomNum);
+
+			//INPUT
+			var readKeyPress =function(keyEvent){
+				console.log('in readkeypress :3')
+				var unicodeNumber	= keyEvent.which || keyEvent.keyCode; 
+				//get keypress then return it
+				console.log(unicodeNumber);
+				return unicodeNumber; //character pressed
+			}
+			//jQuery will get your current position, I do not need to make a function for it. 
+
+			//PROCESS move a certain direction, depending on character that is pressed
+			var processFunction =function(uniCode){
+				//use if and else functions to decide which OUPUT to send the unicode to. 
+				console.log('in the porcessing function '+ uniCode)
+				if (uniCode == 87){
+					linkUp();
+				}
+
+				else if (uniCode == 83){
+					linkDown();
+				}
+				
+				else if (uniCode == 65){
+					linkLeft();
+				}
+				
+				else if (uniCode == 68){
+					linkRight();
+				}
+			}
+
+
+			//PROCESS - math
+			var answer = Math.PI * ( Math.pow( randomNum, 7 ) );
+				
+			//OUTPUT - make link move up
+			var linkUp =function(){
+				console.log('in move link up');
+				//change the directional image
+		 		document.getElementById("linkImg").src = "http://drapak.ca/cpg/img/link-up.png";				
+				$( "#linkImg" ).animate( { top: "-=30px" } );
+				//animate him with jQuery and put him in the output paragraph
+            	document.getElementById("outputParagraph").innerHTML = "#linkUp";
+			}
+
+			//OUTPUT - make link move down
+			var linkDown =function(){
+				console.log('in move link down');
+				//change the directional image
+		 		document.getElementById("linkImg").src = "http://drapak.ca/cpg/img/link-down.png";
+				$( "#linkImg" ).animate( { top: "+=30px" } );
+				//animate him with jQuery and put him in the output paragraph
+            	document.getElementById("outputParagraph").innerHTML = "#linkDown";
+			}
+
+			//OUTPUT - make link move left 		
+			var linkLeft =function(){
+				console.log('in move link left');
+				//change the directional image
+		 		document.getElementById("linkImg").src = "http://drapak.ca/cpg/img/link-left.png";				
+				$( "#linkImg" ).animate( { left: "-=30px" } );
+				//animate him with jQuery and put him in the output paragraph
+            	document.getElementById("outputParagraph").innerHTML = "#linkLeft";
+			}
+
+			//OUTPUT - make link move right
+			var linkRight =function(){
+				console.log('in move link right');
+				//change the directional image
+				document.getElementById("linkImg").src = "http://drapak.ca/cpg/img/link-right.png";				
+				$( "#linkImg" ).animate( { left: "+=30px" } );
+				//animate him with jQuery and put him in the output paragraph				
+            	document.getElementById("outputParagraph").innerHTML = "#linkRight";
+            }
+
+            //OUTPUT - math answer
+            	console.log(answer);
+
+			//MAIN - CENTRAL HUB
+			var mainLinkMover =function(keyEvent){
+				//Call up INPUT friend and save results
+				var uniCode = readKeyPress(keyEvent);
+				//Call PROCESS friend
+				processFunction(uniCode);
+				console.log('hello from the main function');
+			}
+
+			window.onkeydown = mainLinkMover;
+			document.querySelector( '#specialSecret' ).onclick = linkRight;
+
+
+			//functional programming my dearly detested 
+			//hello kris, you are understanding!!! yippee!!! 
+			//i <3 js
+			//start the skillbuilder, style it up at home tonight and make it look pretty :3
+			//i love making my code cute 
+			//hello mr wagley, if ur reading this, this is my favourite class :D
+
+
+
+		</script>
+	</body>
+</html>
